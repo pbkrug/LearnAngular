@@ -9,16 +9,25 @@
 
         var onUserComplete = function (response) {
             $scope.user = response.data;
+            $http.get($scope.user.repos_url)
+                .then(onRepos, onError);
+        };
+
+        var onRepos = function (response) {
+            $scope.repos = response.data;
         };
 
         var onError = function (reason) {
-            $scope.error = "Could not retrieve data on the user."
+            $scope.error = "Could not retrieve the data."
         };
 
-        $http.get("https://api.github.com/users/pbkrug")
-            .then(onUserComplete, onError);
+        $scope.search = function (username) {
+            $http.get("https://api.github.com/users/" + username)
+                .then(onUserComplete, onError);
+        };
 
 
+        $scope.username = "angular";
         $scope.message = "Simple GitHub User Viewer";
 
 
