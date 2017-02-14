@@ -1,19 +1,35 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="githubViewer">
 
 <head>
-    <script data-require="angular.js@1.3.0" data-semver="1.3.0"
-            src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <script data-require="angular.js@1.2.0" data-semver="1.2.0"
+            src="https://code.angularjs.org/1.2.0/angular.js"></script>
     <link rel="stylesheet" href="style.css"/>
     <script src="script.js"></script>
 </head>
 
-<body>
-<h1>Hello AngularJS!</h1>
+<body ng-controller="MainController">
+<h1>{{message}}</h1>
+<div>
 
-{{ 698 / 87 }}
+    <div>
+        {{error}}
+    </div>
 
+    <div>
+        Name: {{user.name}}
+    </div>
+    <div>
+        Location: {{user.location}}
+    </div>
+    <div>
+        Company: {{user.company}}
+    </div>
+    <div>
+        Bio: {{user.bio}}
+    </div>
+    <img ng-src="{{user.avatar_url}}" title="{{user.name}}">
+</div>
 
 </body>
-
 </html>

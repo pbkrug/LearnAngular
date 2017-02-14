@@ -1,23 +1,29 @@
 // Code goes here
 
+(function () {
 
-var work = function () {
 
-    console.log("working hard!");
+    var app = angular.module("githubViewer", []);
 
-};
+    var MainController = function ($scope, $http) {
 
-var doWork = function (f) {
+        var onUserComplete = function (response) {
+            $scope.user = response.data;
+        };
 
-    console.log("starting work...");
-    try {
-        f();
-    }
-    catch (ex) {
-        console.log("ex");
-    }
-    console.log("done with work...");
-};
+        var onError = function (reason) {
+            $scope.error = "Could not retrieve data on the user."
+        };
 
-doWork(work);
+        $http.get("https://api.github.com/users/pbkrug")
+            .then(onUserComplete, onError);
 
+
+        $scope.message = "Simple GitHub User Viewer";
+
+
+    };
+
+    app.controller("MainController", ["$scope", "$http", MainController]);
+
+}());
