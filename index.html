@@ -32,6 +32,12 @@
 
 </div>
 
+Order:
+<select ng-model="repoSortOrder">
+    <option value="+name">Name (A to Z)</option>
+    <option value="-stargazers_count">Stars (descending)</option>
+    <option value="+language">Language (A to Z)</option>
+</select>
 <table>
     <thead>
     <tr>
@@ -41,10 +47,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="repo in repos">
+    <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
         <td>{{repo.name}}</td>
         <td>{{repo.stargazers_count | number}}</td>
-        <td>{{repo.languarge}}</td>
+        <td>{{repo.language}}</td>
     </tr>
     </tbody>
 </table>
