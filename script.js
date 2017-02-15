@@ -13,12 +13,15 @@
                 .then(onRepos, onError);
         };
 
+
         var onRepos = function (response) {
             $scope.repos = response.data;
+            $scope.error = null;
         };
 
         var onError = function (reason) {
-            $scope.error = "Could not retrieve the data."
+            $scope.error = "Could not retrieve data for user: " + $scope.username;
+            $scope.user = null;
         };
 
         $scope.search = function (username) {
