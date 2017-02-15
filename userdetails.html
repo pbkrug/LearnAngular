@@ -1,10 +1,12 @@
-<div>
+<div id="userDetails">
     <h2>Name: {{user.name}}</h2>
     Location: {{user.location}} <br>
     Company: {{user.company}} <br>
     Bio: {{user.bio}} <br>
+    <!--suppress HtmlUnknownAttribute -->
     <img ng-src="{{user.avatar_url}}" title="{{user.name}}"> <br>
     Order:
+    <!--suppress HtmlUnknownAttribute -->
     <select ng-model="repoSortOrder">
         <option value="+name">Name (A to Z)</option>
         <option value="-stargazers_count">Stars (descending)</option>
@@ -23,6 +25,7 @@
     </tr>
     </thead>
     <tbody>
+    <!--suppress HtmlUnknownAttribute -->
     <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
         <td>{{repo.name}}</td>
         <td>{{repo.stargazers_count | number}}</td>

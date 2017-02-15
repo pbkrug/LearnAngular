@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownAttribute -->
 <html ng-app="githubViewer">
 
 <head>
@@ -11,16 +12,20 @@
     <script src="script.js"></script>
 </head>
 
+<!--suppress HtmlUnknownAttribute -->
 <body ng-controller="MainController">
 <h1>{{message}}</h1>
 
     <div>{{error}}</div>
 
-    <form name="searchUser" ng-submit="search(username)">
-        <input type="search" required placeholder="Username to search" ng-model="username">
+<!--suppress HtmlUnknownAttribute -->
+<form name="searchUser" ng-submit="search(username)">
+    <!--suppress HtmlUnknownAttribute -->
+    <input type="search" required placeholder="Username to search" ng-model="username">
         <input type="submit" value="Search">
     </form>
 
+<!--suppress HtmlUnknownAttribute, HtmlUnknownAttribute -->
 <div ng-include="'userdetails.html'" ng-show="user"></div>
 
 </body>

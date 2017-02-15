@@ -5,7 +5,7 @@
 
     var app = angular.module("githubViewer", []);
 
-    var MainController = function ($scope, $http) {
+    var MainController = function ($scope, $http, $log, $anchorScroll, $location) {
 
         var onUserComplete = function (response) {
             $scope.user = response.data;
@@ -16,6 +16,8 @@
 
         var onRepos = function (response) {
             $scope.repos = response.data;
+            $location.hash("userDetails");
+            $anchorScroll();
             $scope.error = null;
         };
 
@@ -25,6 +27,7 @@
         };
 
         $scope.search = function (username) {
+            $log.info("Searching for: " + username);
             $http.get("https://api.github.com/users/" + username)
                 .then(onUserComplete, onError);
         };
@@ -37,6 +40,6 @@
 
     };
 
-    app.controller("MainController", ["$scope", "$http", MainController]);
+    app.controller("MainController", MainController);
 
 }());
