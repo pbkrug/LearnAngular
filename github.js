@@ -17,15 +17,34 @@
             $log.info("github.js - Repos URL is '" + user.repos_url + "'");
             return $http.get(user.repos_url)
                 .then(function (response) {
-                    $log.info("Repository objects: " + response.data);
+                    //$log.info("Repository objects: " + response.data);
                     return response.data;
                     });
             };
 
+        var getRepoDetails = function (username, reponame) {
+            var repo;
+            var repoUrl = "https://api.github.com/repos/" + username + "/" + reponame;
+            $log.info("github.js - Retrieving repository for user '" + username + "'");
+            $log.info("github.js - Repo URL is '" + repoUrl + "'");
+            return $http.get(repoUrl)
+                .then(function (response) {
+                    $log.info("Repository object: " + response.data);
+                    repo = response.data;
+                    return $http.get(repoUrl + "/contributors");
+                })
+                .then(function (response) {
+                    repo.contributors = response.data;
+                    return repo;
+                });
+
+        };
+
         //Reveal public pointers to private functions and properties
         return {
             getUser: getUser,
-            getRepos: getRepos
+            getRepos: getRepos,
+            getRepoDetails: getRepoDetails
         };
     };
 

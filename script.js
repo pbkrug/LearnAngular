@@ -6,7 +6,7 @@
     var MainController = function ($scope, $location, $log) {
 
         $scope.search = function (username) {
-            $log.info("script.js - setting location path to /user/...");
+            $log.info("script.js - setting location path to /user/" + username);
             $location.path("/user/" + username);
         };
 

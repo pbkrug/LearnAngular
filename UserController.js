@@ -26,7 +26,7 @@
 
         $scope.username = $routeParams.username;
         $scope.repoSortOrder = "-stargazers_count";
-        $log.info("UserController - calling github.getUser....");
+        $log.info("UserController - calling github.getUser...");
         github.getUser($scope.username).then(onUserComplete, onError);
     };
 
