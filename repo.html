@@ -1,7 +1,7 @@
 <div>
     <br> <b><i>{{ error }}</i></b> <br>
     <h2>Repository Name: {{repo.name}}</h2>
-    Issues: {{repo.open_issues_count}} <br>
+    <h3>Issues: {{repo.open_issues_count}}</h3> <br>
 
 
 </div>
@@ -9,13 +9,13 @@
 <div>
     <ul>
         <li ng-repeat="user in repo.contributors">
-            <img ng-src="{{repo.avatar_url}}" title="{{user.name}}">
-            {{ user.login }}
+            <b>Contributor:</b> <a href="#/user/{{ user.login }}">{{user.login}}</a><br>
+            <img ng-src="{{user.avatar_url}}" title="{{user.login}}">
         </li>
 
     </ul>
 
 </div>
 <br>
-<a href="#/main">Back to Search</a><br>
+<a href="#/main">Back to Search</a><br><br>
 <a href="#/user/{{repo.owner.login}}">Back to {{repo.owner.login}}</a>
