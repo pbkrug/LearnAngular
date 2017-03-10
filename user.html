@@ -7,8 +7,8 @@
     <div ng-show="user.bio"><b>Bio:</b> {{user.bio}} <br></div>
     <b>Account Created:</b> {{user.created_at | date}} <br>
     <b>Last Updated:</b> {{user.updated_at | date}} <br>
-    <img ng-src="{{user.avatar_url}}" title="{{user.name}}"> <br>
-    Order:
+    <img ng-src="{{user.avatar_url}}" title="{{user.name}}"> <br><br>
+    <b>Order:</b>
 
     <select ng-model="repoSortOrder">
         <option value="+name">Name (A to Z)</option>
@@ -20,7 +20,8 @@
 <table>
     <thead>
     <tr>
-        <th>Name</th>
+        <th align="left">Name</th>
+        <th align="left">Description</th>
         <th>Stars</th>
         <th>Language</th>
     </tr>
@@ -29,6 +30,7 @@
 
     <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
         <td><a href="#/repo/{{user.login}}/{{repo.name}}">{{repo.name}}</a></td>
+        <td>{{repo.description}}</td>
         <td>{{repo.stargazers_count | number}}</td>
         <td>{{repo.language}}</td>
     </tr>
